@@ -1,10 +1,14 @@
 import folium
 import pandas as pd
+
 import dijkstra_sp as dijk
-import sp as sPath
-import graph_distance as graph_distance
+import shortest_path 
 
+import distance_fixed
+import distance_dictionary as dictionary
 
+# print(distance_fixed.graph)
+print(dictionary.dictionary)
 m = folium.Map(location=[16.7982,96.1422],zoom_start=14)
 
 test_cor= pd.read_csv('test_cor.csv')
@@ -47,14 +51,20 @@ m.add_child(incidents)
 # dijk.dijkstra(graph, 'a', 'e')
 start = input("Type a new source: ")
 end = input("Type a new destination : ")
-sPath = sPath.dijkstra(graph_distance.graph, start, end)
-path = dijk.dijkstra(graph_distance.graph, start, end)
-print("sp" , sPath)
-print("dijk" , path)
+
+# shortest_path = shortest_path.dijkstra(distance_fixed.graph, start, end)
+# path = dijk.dijkstra(distance_fixed.graph, start, end)
+shortest_path = shortest_path.dijkstra(distance_fixed.dictionary, start, end)
+# path = dijk.dijkstra(dictionary.dictionary, start, end) 
+# path = []
+# path.append( dijk.dijkstra(dictionary.dictionary, start, end) )
+
+# print("sp" , shortest_path)
+print("dijkstra is" , shortest_path)
 
 toDraw= []; poly =[];
 
-for p in path:
+for p in shortest_path:
     for name,lat,lng in zip(test_cor.Name,test_cor.Latitude,test_cor.Longitude):            
         if p == name:
             # print (name, lat , lng); # break;
@@ -65,9 +75,11 @@ for p in path:
             toDraw.append( { 'name': name,'lat': lat,"lng": lng } ) 
 
 
-
-for name,lat,lng in zip(bus_stop.Name,bus_stop.Latitude,bus_stop.Longitude):    
-    poly.append( [lat , lng] )
+for idx, word in enumerate(shortest_path):
+    # print (idx, word)
+    for name,lat,lng in zip(bus_stop.Name,bus_stop.Latitude,bus_stop.Longitude): 
+            if word == name:
+                poly.append( [lat , lng] )
 
             
 
@@ -77,5 +89,5 @@ for name,lat,lng in zip(bus_stop.Name,bus_stop.Latitude,bus_stop.Longitude):
 # for i in toDraw:
 #     print (i['lat'])
 
-# folium.PolyLine(poly, color="blue", weight=2.5, opacity=1).add_to(m)
+folium.PolyLine(poly, color="blue", weight=2.5, opacity=1).add_to(m)
 m.save("index1.html")

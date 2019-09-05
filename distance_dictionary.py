@@ -1,36 +1,34 @@
 import pandas as pd
 import csv
-import math
 
-dictionary= {}; distance = []; header=['a','b','c']
+dictionary= {}; 
+distance = []; header=[]
+# header=['a','b','c']
 # header = ['Sule', 'Sule Myodaw Hall', 'Yoke Shin Yone']
 
-with open('distance_csv/dist.csv', 'r') as readFile:
+df = pd.read_csv('sule_shwedagon.csv')
+for name in (df.Name):
+    header.append(name); 
+# print(header)
+
+with open('haversine/distance_csv/distance_run.csv', 'r') as readFile:
 	reader = csv.reader(readFile)	
 	
 	for row in reader:
-		sub_dist = []
+		sub_dist_row = []
 		for column in row:
 			# if column == '0': continue;	
 			if column == '':	continue;		
-			sub_dist.append(column)
-		distance.append(sub_dist)
+			sub_dist_row.append(column)
+		distance.append(sub_dist_row)
 	distance = list(filter(None, distance)) #remove empty index from string list
-	print(distance)
+	# print(distance)
 readFile.close()
-# print(header[1])
-# print(distance[1][0])
+# print(header[1])	# print(distance[1][0])
 
-# for h in header:
-# 	for d in distance:
-# 		if h== d: continue
-# 		dictionary.update({'key3':'geeks'}) 
-		# dictionary.update(newkey1 ='portal') 
 
-# print(len(point), point)  #length = 3 .i.e index 0,1,2
-# print (df.point[0])
-# for n in range(1,len(point)): #1,2
-
+# print(len(header), header)  #length = 3 .i.e index 0,1,2
+# for n in range(1,len(header)): #1,2
 for n in range(len(header)): #0,1,2	 #row
 	sub_dict ={}
 	prefix = header[n];	dist = distance[n]
@@ -41,8 +39,9 @@ for n in range(len(header)): #0,1,2	 #row
 	# dictionary.update({'a':sub_dict})  #{'a': {'a': 0, 'b': 1}}
 
 	for i in range(len(header)):	#0,1,2	#column
-		sub_dict.update({header[i]:dist[i]})
+		# sub_dict.update({header[i]:1})
+		sub_dict.update({header[i]:float(dist[i])})
 	# print('s_d',sub_dict)
 	dictionary.update({prefix:sub_dict})
-print('final',dictionary)
+# print('final',dictionary)
 

@@ -119,7 +119,7 @@ def dijkstra(graph,start,goal):
 #  If the cost is infinity, the node had not been reached.
 # =============================================================================
     if shortest_distance[goal] != infinity:
-        print('Shortest distance is ' + str(shortest_distance[goal]))
+        print('Shortest distance is ' , str(shortest_distance[goal]))
         # print('And the path is ' + str(track_path))
         return str(track_path)
 
