@@ -27,9 +27,12 @@ csvFile.close()
 
 #Example 3: Write a python list into person.csv file
 csvData = [['Person', 'Age'], ['Peter', '22'], ['Jasmine', '21'], ['Sam', '24']]
+# csvData = ['Person', 'Age', 'Aung Aung', '22']
 with open('distance_csv/person.csv', 'w') as csvFile:
     writer = csv.writer(csvFile)
     writer.writerows(csvData)
+    # writer.writerow(csvData)
+    # writer.writerow(['Person', 'Age', 'Aung Aung', '23'])
 csvFile.close()
 
 raw_data = pd.read_excel('distance_csv/people.xlsx')

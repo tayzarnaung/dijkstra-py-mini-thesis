@@ -28,19 +28,27 @@ df = pd.read_csv('../sule_shwedagon.csv')
 for name in (df.Name):
     sub_header.append(name); 
 header.append(sub_header)
-
-for name,lat, lon, in zip(df.Name,df.Latitude,df.Longitude):
-    sub_row= []
-    sub_row.append(name)
-    for lat2, lon2, in zip(df.Latitude,df.Longitude):
-        distance = haversine(lat,lon,lat2,lon2)
-        sub_row.append( distance)
-    row.append(sub_row)
-
-# print(sub_row); print(row)
+# print(header)
 
 with open('distance_csv/distance.csv', 'w') as csvFile:
     writer = csv.writer(csvFile)
     writer.writerows(header)
-    writer.writerows(row)
 csvFile.close()
+
+for name,lat, lon, in zip(df.Name,df.Latitude,df.Longitude):
+    sub_row= []; 
+    sub_row.append(name)
+
+    for lat2, lon2, in zip(df.Latitude,df.Longitude):
+        distance = haversine(lat,lon,lat2,lon2)
+        sub_row.append( distance)
+    # row.append(sub_row)
+
+    with open('distance_csv/distance.csv', 'a') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerow(sub_row)
+    csvFile.close()
+
+# print(sub_row)
+# print(row)
+
