@@ -20,8 +20,10 @@ with open('haversine/distance_csv/distance_run.csv', 'r') as readFile:
 			# if column == '0': continue;	
 			if column == '':	continue;		
 			sub_dist_row.append(column)
+		# if sub_dist_row != []:
 		distance.append(sub_dist_row)
-	distance = list(filter(None, distance)) #remove empty index from string list
+		# print (distance)
+	distance = list(filter(None, distance)) #remove empty string([]) arr from string list
 	# print(distance)
 readFile.close()
 # print(header[1])	# print(distance[1][0])
@@ -43,5 +45,4 @@ for n in range(len(header)): #0,1,2	 #row
 		sub_dict.update({header[i]:float(dist[i])})
 	# print('s_d',sub_dict)
 	dictionary.update({prefix:sub_dict})
-# print('final',dictionary)
-
+print('final',dictionary)

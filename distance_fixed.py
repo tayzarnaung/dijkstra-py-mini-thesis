@@ -24,9 +24,5 @@ dictionary = {
 'Kan Yeik Thar': {'U Htaung Bo': 0.646248473}
 } 
 
-
-# arr =[]
 # for i in range(10):
 #     # print (i)
-#     arr.append(i)
-# print ('arr' , arr)

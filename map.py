@@ -26,7 +26,7 @@ for lat, lng, in zip(test_cor.Latitude,test_cor.Longitude):
             radius=5, # define how big you want the circle markers to be
             color='red',
             fill=True,
-            fill_color='green',
+            fill_color='darkgreen',
             fill_opacity=0.6
         )
     )
@@ -52,10 +52,12 @@ m.add_child(incidents)
 start = input("Type a new source: ")
 end = input("Type a new destination : ")
 
+
 # shortest_path = shortest_path.dijkstra(distance_fixed.graph, start, end)
-# path = dijk.dijkstra(distance_fixed.graph, start, end)
 shortest_path = shortest_path.dijkstra(distance_fixed.dictionary, start, end)
-# path = dijk.dijkstra(dictionary.dictionary, start, end) 
+# path = dijk.dijkstra(distance_fixed.graph, start, end)
+path = dijk.dijkstra(distance_fixed.dictionary, start, end) 
+print(path)
 # path = []
 # path.append( dijk.dijkstra(dictionary.dictionary, start, end) )
 
