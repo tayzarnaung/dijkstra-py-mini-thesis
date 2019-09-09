@@ -18,24 +18,8 @@ def haversine(lat1, lon1, lat2, lon2):
     r = 6371 # Radius of earth in kilometers. Use 3956 for miles
     return c * r
 
-csvData = [ ['Name', 'Latitude', 'Longitude', 'Distance'] ]
-header= []; sub_header = ['Name']; 
-row = [];   sub_row= []
 
-
-df = pd.read_csv('../sule_shwedagon.csv')
-
-for name in (df.Name):
-    sub_header.append(name); 
-header.append(sub_header)
-# print(header)
-
-with open('distance_csv/distance.csv', 'w') as csvFile:
-    writer = csv.writer(csvFile)
-    writer.writerows(header)
-csvFile.close()
-
-for name,lat, lon, in zip(df.Name,df.Latitude,df.Longitude):
+def add_row():
     sub_row= []; 
     sub_row.append(name)
 
@@ -44,11 +28,45 @@ for name,lat, lon, in zip(df.Name,df.Latitude,df.Longitude):
         sub_row.append( distance)
     # row.append(sub_row)
 
+    for lat2, lon2, in zip(df2.Latitude,df2.Longitude):
+        distance = haversine(lat,lon,lat2,lon2)
+        sub_row.append( distance)
+    # row.append(sub_row)
+
     with open('distance_csv/distance.csv', 'a') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerow(sub_row)
     csvFile.close()
+#end function -   -   -   -   -   -
 
+
+csvData = [ ['Name', 'Latitude', 'Longitude', 'Distance'] ]
+header= []; sub_header = ['Name']; 
+row = [];   sub_row= []
+
+
+df = pd.read_csv('../sule_shwedagon.csv')
+df2 = pd.read_csv('../test_cor.csv')
+
+for name in (df.Name):
+    sub_header.append(name); 
+for name in (df2.Name):
+    sub_header.append(name)
+header.append(sub_header)
+# print(header)
+
+with open('distance_csv/distance.csv', 'w') as csvFile:
+    writer = csv.writer(csvFile)
+    writer.writerows(header)
+csvFile.close()
+
+
+
+for name,lat, lon, in zip(df.Name,df.Latitude,df.Longitude):
+    add_row()
+
+for name,lat, lon, in zip(df2.Name,df2.Latitude,df2.Longitude):
+    add_row()
 # print(sub_row)
 # print(row)
 

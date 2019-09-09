@@ -45,4 +45,4 @@ for n in range(len(header)): #0,1,2	 #row
 		sub_dict.update({header[i]:float(dist[i])})
 	# print('s_d',sub_dict)
 	dictionary.update({prefix:sub_dict})
-print('final',dictionary)
+# print('final',dictionary)

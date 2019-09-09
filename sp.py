@@ -18,33 +18,75 @@ class Graph():
         self.edges[to_node].append(from_node)
         self.weights[(from_node, to_node)] = weight
         self.weights[(to_node, from_node)] = weight
-
+        # print(from_node, to_node,weight)
 
 graph = Graph()
 
+# edges = [
+#     ('X', 'A', 7), ('X', 'B', 2), ('X', 'C', 3),('X', 'E', 4),
+#     ('A', 'B', 3), ('A', 'D', 4),
+#     ('B', 'D', 4),('B', 'H', 5),
+#     ('C', 'L', 2),
+#     ('D', 'F', 1),
+#     ('F', 'H', 3),
+#     ('G', 'H', 2), ('G', 'Y', 2),
+#     ('I', 'J', 6), ('I', 'K', 4),('I', 'L', 4),
+#     ('J', 'L', 1),
+#     ('K', 'Y', 5),
+# ]
+# edges = [
+#     ('A','B',3), ('A','C',1),
+#     ('B','C',7), ('B','D',5), ('B','E',1),
+#     ('C','D',2),
+#     ('D','E',7),
+# ]
 edges = [
-    ('X', 'A', 7),
-    ('X', 'B', 2),
-    ('X', 'C', 3),
-    ('X', 'E', 4),
-    ('A', 'B', 3),
-    ('A', 'D', 4),
-    ('B', 'D', 4),
-    ('B', 'H', 5),
-    ('C', 'L', 2),
-    ('D', 'F', 1),
-    ('F', 'H', 3),
-    ('G', 'H', 2),
-    ('G', 'Y', 2),
-    ('I', 'J', 6),
-    ('I', 'K', 4),
-    ('I', 'L', 4),
-    ('J', 'L', 1),
-    ('K', 'Y', 5),
+    ('Sule','Sule Myodaw Hall',0.277987317), ('Sule','Pan Soe Tan',0.308944496),('Sule','Thein Gyi Zay',0.607758151963839),
+    ('Sule Myodaw Hall','Yoke Shin Yone',0.267080093), ('Sule Myodaw Hall','Bar Lan',0.319386564), ('Sule Myodaw Hall','Kone Zay Tan',0.607241518667168), 
+    ('Yoke Shin Yone','Youk Lan',0.445289046),('Yoke Shin Yone','Pan Soe Tan2',0.319575954), ('Yoke Shin Yone','Bo Gyoke Zay',0.597112789),
+    ('Youk Lan','Youk Lann',0.401209158), ('Youk Lan','Youk Lan 2',0.217517123), ('Youk Lan','Railway',0.321112960225533),
+    ('Youk Lann','Kyauk Taing',0.309336351),
+    ('Youk Lan2','Kyauk Taing',0.486675035),
+    ('Kyauk Taing','U Htaung Bo',0.757996616),
+    ('U Htaung Bo','Taung Phat Mote', 0.670646109), ('U Htaung Bo','Kan Yeik Thar', 0.646248473),('U Htaung Bo','Bahan 3 Lan', 0.424969627585825),
+    ('Bahan 3 Lan', 'A Shae Phat Mote',0.661485795102546),
+    ('Taung Phat Mote','A Shae Phat Mote', 0.385173739),
+    ('Pan Soe Tan','Bar Lan', 0.267080098), 
+    ('Bar Lan','Sule Myodaw Hall', 0.319386564),('Bar Lan','Pan Soe Tan2', 0.278191101),
+    ('Pan Soe Tan2','Yoke Shin Yone', 0.319575954),('Pan Soe Tan2','Railway', 0.467503801633509),
+    ('Thein Gyi Zay','Kone Zay Tan',0.266867823947164), ('Thein Gyi Zay','Phone Gyi Lan',0.885392549158717),
+    ('Kone Zay Tan','Bo Gyoke Zay',0.278801558781131),('Kone Zay Tan','San Pya',0.870106164012649),
+    ('Bo Gyoke Zay','Phyar Lan',0.278191095220989),('Bo Gyoke Zay','Tha Yet Taw',0.888088144092057),
+    ('Phyar Lan', 'U Wisara',0.465556678015865), ('Phyar Lan', 'Shwedagon J',0.455899199242704), 
+    ('U Wisara','U Wisara Awine',1.1573252770122),
+    ('U Wisara Awine','Taung Phat Mote',0.395281938697237),('U Wisara Awine','PyaeAlone',0.724761558742046),
+    ('PyaeAlone','Myaeni Gone',0.769252234475195),
+    ('Phone Gyi Lan', 'San Pya', 0.260622671150373),
+    ('San Pya','Tha Yet Taw',0.318081634643598),
+    ('Tha Yet Taw','Pegu Club',0.938386802296795),
+    ('Pegu Club', 'Myaeni Gone',1.38538058684929)
 ]
+
+
 
 for edge in edges:
     graph.add_edge(*edge)
+
+# arr = []
+# arr = [('A', 'B',3),('A','C',1)]
+# for i in range(3):
+#     x = input("Type source:")
+#     y = input("Type destination:")
+#     dist = float( input("Type distance: ") )
+
+#     string =  x , y , dist 
+#     print (string)  #will output e.g.('A','B',3)
+#     arr.append(string)
+# print(arr)
+
+# for edge in arr:
+#     graph.add_edge(*edge)
+
 
 
 def dijsktra(graph, initial, end):
@@ -84,5 +126,8 @@ def dijsktra(graph, initial, end):
     path = path[::-1]
     return path
 
-path = dijsktra(graph, 'X', 'Y')
-print(path)
+# path = dijsktra(graph, 'X', 'Y')
+# source = input("Type source:")
+# destination = input("Type destination:")
+# path  = dijsktra(graph, source, destination)
+# print(path)

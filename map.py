@@ -3,19 +3,21 @@ import pandas as pd
 
 import dijkstra_sp as dijk
 import shortest_path 
+import sp
+from tkinter import *
 
 import distance_fixed
 import distance_dictionary as dictionary
 
 # print(distance_fixed.graph)
-print(dictionary.dictionary)
+# print(dictionary.dictionary)
 m = folium.Map(location=[16.7982,96.1422],zoom_start=14)
 
 test_cor= pd.read_csv('test_cor.csv')
-## print( test_cor.get('Name') )
 
 bus_stop = pd.read_csv('sule_shwedagon.csv')
-# bus_stop = pd.read_csv('bus_stop.csv')
+# print ( bus_stop.get('Name') )
+# bus_stop2 = pd.read_csv('bus_stop.csv')
 
 incidents = folium.map.FeatureGroup()
 
@@ -31,33 +33,50 @@ for lat, lng, in zip(test_cor.Latitude,test_cor.Longitude):
         )
     )
 
-
+names = []
 for name,lat, lng, in zip(bus_stop.Name,bus_stop.Latitude,bus_stop.Longitude):
-    marker3 = folium.Marker(location=[lat, lng], popup=name).add_to(m)
-    # incidents.add_child(
-    #     folium.CircleMarker(
-    #         [lat, lng],
-    #         radius=5, 
-    #         color='red',
-    #         fill=True,
-    #         fill_color='blue',
-    #         fill_opacity=0.6
-    #     )
-    # )    
+    names.append(name)
+    marker = folium.Marker(location=[lat, lng], popup=name).add_to(m)    
+print(names) 
 
-m.add_child(incidents)
+m.add_child(incidents)        
 
+window = Tk()
+window.title("Where would yo go?")
+window.geometry("640x440+0+0")
 
-# dijk.dijkstra(graph, 'a', 'e')
-start = input("Type a new source: ")
-end = input("Type a new destination : ")
+heading = Label(window, text="Finding The Best Route", font=("arial",30,"italic"), fg="steelblue").pack()
+label1 = Label(window, text="Enter source: ", font=("arial",20,"bold"), fg="black").place(x=10,y=100)
+label2 = Label(window, text="Enter destination: ", font=("arial",20,"bold"), fg="black").place(x=10,y=150)
 
+source =  StringVar(value=''); destination = StringVar(value='');
+large_font= ('Verdana',20)
+entry1 = Entry(window, textvariable=source, font=large_font, width=20, bg="lightgreen").place(x=250, y=100)
+entry2 = Entry(window, textvariable=destination, font=large_font, width=20, bg="lightgreen").place(x=250, y=150)
+
+start = ''; end =''
+def search():
+    global start; global end;
+    start = str(source.get()); end = destination.get()
+    # print ( str(source.get()), destination.get() )
+    window.destroy()
+work = Button(window, text="Search", width=20, height=2, bg="lightblue", command=search).place(x=250, y=200)
+
+window.mainloop()
+
+# dijk.dijkstra(graph, 'Sule', 'Bar Lan')
+# start = input("Type a new source: ")
+# end = input("Type a new destination : ")
 
 # shortest_path = shortest_path.dijkstra(distance_fixed.graph, start, end)
-shortest_path = shortest_path.dijkstra(distance_fixed.dictionary, start, end)
+# shortest_path = shortest_path.dijkstra(distance_fixed.dictionary, start, end)
+
 # path = dijk.dijkstra(distance_fixed.graph, start, end)
-path = dijk.dijkstra(distance_fixed.dictionary, start, end) 
-print(path)
+# path = dijk.dijkstra(distance_fixed.dictionary, start, end) 
+# print(path)
+
+shortest_path = sp.dijsktra(sp.graph, start, end)
+
 # path = []
 # path.append( dijk.dijkstra(dictionary.dictionary, start, end) )
 
