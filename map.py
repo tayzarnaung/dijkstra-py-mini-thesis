@@ -7,7 +7,8 @@ import sp
 from tkinter import *
 
 import distance_fixed
-import distance_dictionary as dictionary
+# import distance_dictionary as dictionary
+import webbrowser
 
 # print(distance_fixed.graph)
 # print(dictionary.dictionary)
@@ -110,5 +111,7 @@ for idx, word in enumerate(shortest_path):
 # for i in toDraw:
 #     print (i['lat'])
 
-folium.PolyLine(poly, color="blue", weight=2.5, opacity=1).add_to(m)
+folium.PolyLine(poly, color="red", weight=3.5, opacity=1).add_to(m)
 m.save("index1.html")
+
+webbrowser.open_new_tab("index1.html")

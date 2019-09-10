@@ -49,24 +49,36 @@ edges = [
     ('Youk Lan2','Kyauk Taing',0.486675035),
     ('Kyauk Taing','U Htaung Bo',0.757996616),
     ('U Htaung Bo','Taung Phat Mote', 0.670646109), ('U Htaung Bo','Kan Yeik Thar', 0.646248473),('U Htaung Bo','Bahan 3 Lan', 0.424969627585825),
-    ('Bahan 3 Lan', 'A Shae Phat Mote',0.661485795102546),
-    ('Taung Phat Mote','A Shae Phat Mote', 0.385173739),
+    ('Bahan 3 Lan', 'A Shae Phat Mote',0.661485795102546),('Bahan 3 Lan','Yae Khae Saing',0.178602973432072),
+    ('Taung Phat Mote','A Shae Phat Mote', 0.385173739),('Taung Phat Mote','U Wisara Awine', 0.387238813526231),
     ('Pan Soe Tan','Bar Lan', 0.267080098), 
     ('Bar Lan','Sule Myodaw Hall', 0.319386564),('Bar Lan','Pan Soe Tan2', 0.278191101),
     ('Pan Soe Tan2','Yoke Shin Yone', 0.319575954),('Pan Soe Tan2','Railway', 0.467503801633509),
     ('Thein Gyi Zay','Kone Zay Tan',0.266867823947164), ('Thein Gyi Zay','Phone Gyi Lan',0.885392549158717),
     ('Kone Zay Tan','Bo Gyoke Zay',0.278801558781131),('Kone Zay Tan','San Pya',0.870106164012649),
     ('Bo Gyoke Zay','Phyar Lan',0.278191095220989),('Bo Gyoke Zay','Tha Yet Taw',0.888088144092057),
-    ('Phyar Lan', 'U Wisara',0.465556678015865), ('Phyar Lan', 'Shwedagon J',0.455899199242704), 
+    ('Phyar Lan', 'U Wisara',0.465556678015865), ('Phyar Lan', 'Construction',0.455899199242704),
+    ('Construction','Taung Phat Mote',1.0869028392065796),
     ('U Wisara','U Wisara Awine',1.1573252770122),
-    ('U Wisara Awine','Taung Phat Mote',0.395281938697237),('U Wisara Awine','PyaeAlone',0.724761558742046),
+    ('U Wisara Awine', 'Wizaya Plaza',1.13683676335783),('U Wisara Awine','PyaeAlone',0.724761558742046),
+    ('Wizaya Plaza', 'Hantharwady', 1.32791710272074),('Wizaya Plaza','Har Mit Tic 2',1.52924871096126),('Wizaya Plaza','Shwe Gon Daing',1.39254186037551),
     ('PyaeAlone','Myaeni Gone',0.769252234475195),
     ('Phone Gyi Lan', 'San Pya', 0.260622671150373),
     ('San Pya','Tha Yet Taw',0.318081634643598),
     ('Tha Yet Taw','Pegu Club',0.938386802296795),
-    ('Pegu Club', 'Myaeni Gone',1.38538058684929)
-]
-
+    ('Pegu Club', 'Myaeni Gone',1.38538058684929),
+    ('Myaeni Gone','Hantharwady',1.51465451478916),('Myaeni Gone','Wizaya Plaza',0.646031908907462),
+    ('Hantharwady','Hledan',1.47397206232825),
+    ('Yae Khae Saing','Shwe Gon Daing 2', 0.689927305116301),('Yae Khae Saing', 'A Shae Phat Mote',0.754057265280479),
+    ('Shwe Gon Daing 2', 'Shwe Gon Daing',0.357253876304097),
+    ('Shwe Gon Daing', 'Har Mit Tic 2', 0.734580955432107),
+    ('Har Mit Tic 2', 'Har Mit Tic', 0.656136411191445),
+    ('Har Mit Tic','Kokkaing',0.906431518959193),
+    ('Kokkaing','Myanmar Plaza',0.648084587959013),('Kokkaing','Inya Myaing',0.585709904881401),
+    ('Inya Myaing','Thanlwin',0.43337868827772),
+    ('Thanlwin','UFL',0.49351102915595),
+    ('UFL', 'Hledan', 1.05581357244266)
+    ]
 
 
 for edge in edges:

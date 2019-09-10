@@ -18,7 +18,6 @@ def haversine(lat1, lon1, lat2, lon2):
     r = 6371 # Radius of earth in kilometers. Use 3956 for miles
     return c * r
 
-
 def add_row():
     sub_row= []; 
     sub_row.append(name)
